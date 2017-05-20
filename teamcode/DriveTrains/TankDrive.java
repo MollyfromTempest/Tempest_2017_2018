@@ -79,11 +79,27 @@ public class TankDrive {
     }
 
     void straight(double pow, int ticks, boolean alignment, LinearOpMode master){
+        if(pow > 1) pow = 1;
+        if(pow < -1) pow = -1;
+
         resetEncoders();
         int start = encoderAvg();
 
         if(alignment){
-            return;
+            gyro.resetRobotHeading();
+            straight(pow);
+
+            while(ticks > encoderAvg() - start){
+                if(gyro.robotHeading() > 180 && gyro.robotHeading() < 357){
+                    right(pow, 360-gyro.robotHeading(), master);
+                    straight(pow);
+                }else if(gyro.robotHeading() < 180 && gyro.robotHeading() > 3){
+                    left(pow, gyro.robotHeading(), master);
+                    straight(pow);
+                }
+
+                master.idle();
+            }
         }else{
             straight(pow);
             while(ticks > encoderAvg() - start){master.idle();}
@@ -101,12 +117,47 @@ public class TankDrive {
         frontLeftEnc = frontLeft.getCurrentPosition();
     }
 
-    void left(double pow, int deg){
+    void left(double pow, int deg, LinearOpMode master){
+        deg = Math.abs(deg);
 
+        if(pow > 1) pow = 1;
+        if(pow < -1) pow = -1;
+
+        gyro.resetRobotHeading();
+
+        frontRight.setPower(pow);
+        backRight.setPower(pow);
+        frontLeft.setPower(-pow);
+        frontLeft.setPower(-pow);
+
+        while(Math.abs(gyro.robotHeading()) < deg) master.idle();
+
+        stopmotors();
     }
 
-    void right(double pow, int deg){
+    void right(double pow, int deg, LinearOpMode master){
+        deg = Math.abs(deg);
 
+        if(pow > 1) pow = 1;
+        if(pow < -1) pow = -1;
+
+        gyro.resetRobotHeading();
+
+        frontRight.setPower(-pow);
+        backRight.setPower(-pow);
+        frontLeft.setPower(pow);
+        frontLeft.setPower(pow);
+
+        while(Math.abs(gyro.robotHeading()) < deg) master.idle();
+
+        stopmotors();
+    }
+
+    void stopmotors(){
+        backRight.setPower(0);
+        backLeft.setPower(0);
+        frontRight.setPower(0);
+        frontLeft.setPower(0);
     }
 
 
