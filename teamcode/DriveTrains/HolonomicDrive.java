@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.*;
 
 /**
  * Created by Aaron on 4/25/2017.
@@ -16,10 +17,9 @@ public class    HolonomicDrive {
     public DcMotor SW;
     public DcMotor SE;
 
-    public GyroSensor Gyrosens;
+    public GyroScope gyro;
 
     int speed = 140*4;
-    int robotZeroHeading;
 
     HardwareMap HWMap;
 
@@ -52,7 +52,8 @@ public class    HolonomicDrive {
         SE.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         SE.setMaxSpeed(speed);
 
-        Gyrosens = HWMap.gyroSensor.get("Gyrosens");
+        gyro = new GyroScope();
+        gyro.init(HWMap);
     }
 
     public void pan(double theta, double power){
@@ -81,36 +82,23 @@ public class    HolonomicDrive {
         SW.setPower(0);
     }
 
-    public int robotHeading(){
-        int out = Gyrosens.getHeading() - robotZeroHeading;
-        if(out < 0){
-            return out + 360;
-        }else{
-            return out;
-        }
-    }
-
-    public void resetRobotHeading(){
-        robotZeroHeading = Gyrosens.getHeading();
-    }
-
     public void turnleft(int turnangle, double turnspeedleft, LinearOpMode master) throws InterruptedException {
-        resetRobotHeading();
+        gyro.resetRobotHeading();
         NE.setPower(turnspeedleft);
         SE.setPower(turnspeedleft);
         NW.setPower(-turnspeedleft);
         SW.setPower(-turnspeedleft);
-        while(robotHeading() > 360 - turnangle || robotHeading() < 100) master.idle();
+        while(gyro.robotHeading() > 360 - turnangle || gyro.robotHeading() < 100) master.idle();
         stopmotors();
     }
 
     public void turnright(int turnangle, double turnspeedright, LinearOpMode master) throws InterruptedException {
-        resetRobotHeading();
+        gyro.resetRobotHeading();
         NE.setPower(-turnspeedright);
         SE.setPower(-turnspeedright);
         NW.setPower(turnspeedright);
         SW.setPower(turnspeedright);
-        while(robotHeading() < turnangle || robotHeading() > 300) master.idle();
+        while(gyro.robotHeading() < turnangle || gyro.robotHeading() > 300) master.idle();
         stopmotors();
     }
 }
