@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 public class GyroScope {
     GyroSensor gyro;
+    int robotZeroHeading;
 
     HardwareMap HWMap;
 
@@ -16,6 +17,18 @@ public class GyroScope {
     public void init(HardwareMap HWMap){
         this.HWMap = HWMap;
         gyro = this.HWMap.gyroSensor.get("gyro");
-        gyro.calibrate();
+    }
+
+    public int robotHeading(){
+        int out = gyro.getHeading() - robotZeroHeading;
+        if(out < 0){
+            return out + 360;
+        }else{
+            return out;
+        }
+    }
+
+    public void resetRobotHeading(){
+        robotZeroHeading = gyro.getHeading();
     }
 }
