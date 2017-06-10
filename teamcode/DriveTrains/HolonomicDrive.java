@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains;
-
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.GyroScope;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.*;
 
 /**
@@ -88,7 +90,11 @@ public class    HolonomicDrive {
         SE.setPower(turnspeedleft);
         NW.setPower(-turnspeedleft);
         SW.setPower(-turnspeedleft);
-        while(gyro.robotHeading() > 360 - turnangle || gyro.robotHeading() < 100) master.idle();
+        while(gyro.robotHeading() > 360 - turnangle || gyro.robotHeading() < 100){
+            master.telemetry.addData("Robot Heading:", gyro.robotHeading());
+            master.telemetry.update();
+            master.idle();
+        }
         stopmotors();
     }
 
@@ -100,5 +106,18 @@ public class    HolonomicDrive {
         SW.setPower(turnspeedright);
         while(gyro.robotHeading() < turnangle || gyro.robotHeading() > 300) master.idle();
         stopmotors();
+    }
+    public void turnleftunlim(double turnspeedleft, LinearOpMode master) throws InterruptedException {
+        NE.setPower(turnspeedleft);
+        SE.setPower(turnspeedleft);
+        NW.setPower(-turnspeedleft);
+        SW.setPower(-turnspeedleft);
+    }
+
+    public void turnrightunlim(double turnspeedright, LinearOpMode master) throws InterruptedException {
+        NE.setPower(-turnspeedright);
+        SE.setPower(-turnspeedright);
+        NW.setPower(turnspeedright);
+        SW.setPower(turnspeedright);
     }
 }

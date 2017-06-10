@@ -2,6 +2,7 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.GyroScope;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.*;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -78,7 +79,7 @@ public class TankDrive {
         frontRight.setPower(pow);
     }
 
-    void straight(double pow, int ticks, boolean alignment, LinearOpMode master){
+    void straight(double pow, int ticks, boolean alignment, LinearOpMode master) throws InterruptedException{
         if(pow > 1) pow = 1;
         if(pow < -1) pow = -1;
 
@@ -117,7 +118,7 @@ public class TankDrive {
         frontLeftEnc = frontLeft.getCurrentPosition();
     }
 
-    void left(double pow, int deg, LinearOpMode master){
+    void left(double pow, int deg, LinearOpMode master) throws InterruptedException{
         deg = Math.abs(deg);
 
         if(pow > 1) pow = 1;
@@ -135,7 +136,7 @@ public class TankDrive {
         stopmotors();
     }
 
-    void right(double pow, int deg, LinearOpMode master){
+    void right(double pow, int deg, LinearOpMode master) throws InterruptedException{
         deg = Math.abs(deg);
 
         if(pow > 1) pow = 1;
