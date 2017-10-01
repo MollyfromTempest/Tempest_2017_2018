@@ -2,24 +2,25 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+        import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
+        import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
 
 /**
  * Created by Molly on 5/27/2017.
  */
-@Autonomous
-public class HolonomicDriveTest extends LinearOpMode {
-    HolonomicDrive Holodrive;
-    public void Sleep(long ticks) throws InterruptedException {
-        long timer = System.currentTimeMillis();
-        while (System.currentTimeMillis() - timer < ticks) {
-            idle();
-        }
-    }
-    @Override
-    public void runOpMode ()throws InterruptedException {
+        @Autonomous
+        public class HolonomicDriveTest extends LinearOpMode {
+
+            HolonomicDrive Holodrive;
+            public void Sleep(long ticks) throws InterruptedException {
+                long timer = System.currentTimeMillis();
+                while (System.currentTimeMillis() - timer < ticks) {
+                    idle();
+                }
+            }
+            @Override
+            public void runOpMode ()throws InterruptedException {
         Holodrive = new HolonomicDrive();
         Holodrive.init(hardwareMap);
         waitForStart();
@@ -41,5 +42,6 @@ public class HolonomicDriveTest extends LinearOpMode {
         Holodrive.stopmotors();
         Holodrive.turnrightunlim(0.5, this);
         Holodrive.stopmotors();
+
     }
 }
