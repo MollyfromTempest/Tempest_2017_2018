@@ -30,6 +30,8 @@ public class Jewel_Autonomous extends LinearOpMode{
         //Can I do this? I don't know if I'm allowed to have 2.
 
         waitForStart();
+        Colorsens.leftColor.enableLed(true);
+        Colorsens.rightColor.enableLed(true);
         //Insert Arm Stuff here or maybe in the color loop
         if (Holodrive.BlueSwitch.getState()){
             //BLUE BLUE BLUE
@@ -43,11 +45,15 @@ public class Jewel_Autonomous extends LinearOpMode{
             }
             else if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
                 // Left blue and right red. Since we are blue, we want to turn right.
-                //[[Add the right turning here]]
+                Holodrive.turnrightunlim(0.5, this);
+                Sleep(2000);
+                Holodrive.stopmotors();
             }
             else if (Colorsens.isRed(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
                 // Left red and right blue. Since we are blue, we want to turn left.
-                // [[Add the left turning here]]
+                Holodrive.turnleftunlim(0.5, this);
+                Sleep(2000);
+                Holodrive.stopmotors();
             }
             else{
                 //No reading? Ambigious reading? Either way, something is wrong and we don't want to risk turning.
@@ -66,11 +72,15 @@ public class Jewel_Autonomous extends LinearOpMode{
             }
             else if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
                 // Left blue and right red. Since we are red, we want to turn left.
-                //[[Add the right turning here]]
+                Holodrive.turnleftunlim(0.5, this);
+                Sleep(2000);
+                Holodrive.stopmotors();
             }
             else if (Colorsens.isRed(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
                 // Left red and right blue. Since we are red, we want to turn right.
-                // [[Add the right turning here]]
+                Holodrive.turnrightunlim(0.5, this);
+                Sleep(2000);
+                Holodrive.stopmotors();
             }
             else{
                 //No reading? Ambigious reading? Either way, something is wrong and we don't want to risk turning.
