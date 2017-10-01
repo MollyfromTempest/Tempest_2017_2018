@@ -37,6 +37,8 @@ public class BasicTeleop extends LinearOpMode {
             power = Math.sqrt((gamepad1.left_stick_x) * (gamepad1.left_stick_x) + (gamepad1.left_stick_y) * (gamepad1.left_stick_y));
             if (power > 0.2) {
                 Holodrive.pan(theta, power * driveScale);
+            }else{
+                Holodrive.stopmotors();
             }
         }
     }

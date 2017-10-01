@@ -72,4 +72,11 @@ public class SuperBasicHolonomicDrive {
         }
     }
 
+    public void stopmotors(){
+        NW.setPower(0);
+        SE.setPower(0);
+        NE.setPower(0);
+        SW.setPower(0);
+    }
+
 }
