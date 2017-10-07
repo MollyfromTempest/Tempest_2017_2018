@@ -5,11 +5,17 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators;
  */
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotor;
+<<<<<<< HEAD
+import com.qualcomm.robotcore.hardware.Servo;
+public class Glyph_Arm
+{
+=======
 public class Glyph_Arm
 {
     DcMotor.RunMode encMode = DcMotor.RunMode.RUN_USING_ENCODER;
     DcMotor liftArm;
     DcMotor grabArm;
+>>>>>>> 4f8b23bb54452a2619318a5fb37a14078d3ed9c3
 
     int speed = 140*4;
     double liftPower = 0.5;
