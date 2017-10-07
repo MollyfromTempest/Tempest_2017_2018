@@ -3,6 +3,7 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Programs;
 import android.provider.CalendarContract;
 
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.ColorSensorClass;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -15,6 +16,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Jewel_Autonomous extends LinearOpMode{
     HolonomicDrive Holodrive;
     ColorSensorClass Colorsens;
+    Jewel_Arm Jewel;
     public void Sleep(long ticks) throws InterruptedException {
         long timer = System.currentTimeMillis();
         while (System.currentTimeMillis() - timer < ticks) {
@@ -27,12 +29,14 @@ public class Jewel_Autonomous extends LinearOpMode{
         Holodrive.init(hardwareMap);
         Colorsens = new ColorSensorClass();
         Colorsens.init(hardwareMap);
-        //Can I do this? I don't know if I'm allowed to have 2.
+        Jewel = new Jewel_Arm();
+        Jewel.init(hardwareMap);
+        //Can I do this? I don't know if I'm allowed to have 3.
 
         waitForStart();
         Colorsens.leftColor.enableLed(true);
         Colorsens.rightColor.enableLed(true);
-        //Insert Arm Stuff here or maybe in the color loop
+        Jewel.jewelArmDown();
         if (Holodrive.BlueSwitch.getState()){
             //BLUE BLUE BLUE
             if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isBlue(Colorsens.rightColor)){
