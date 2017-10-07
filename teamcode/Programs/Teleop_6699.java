@@ -15,9 +15,7 @@ public class Teleop_6699 extends LinearOpMode
 {
     // holonomic drive object instance
     HolonomicDrive Holodrive;
-    Jewel_Arm Jewel;
-    Glyph_Arm Glyph;
-
+    
     // sleep fuction
     public void Sleep(long ticks) throws InterruptedException
     {
@@ -75,6 +73,7 @@ public class Teleop_6699 extends LinearOpMode
                 }
                 while (gamepad1.dpad_left) idle();
             }
+
             if (gamepad1.left_trigger>0.2 && gamepad1.right_trigger<0.2){
                 Holodrive.glyphArm.lift();
             } else if (gamepad1.left_trigger< 0.2 && gamepad1.right_trigger>0.2) {

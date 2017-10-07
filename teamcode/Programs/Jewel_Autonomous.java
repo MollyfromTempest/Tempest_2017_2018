@@ -15,45 +15,40 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 @Autonomous
 public class Jewel_Autonomous extends LinearOpMode{
     HolonomicDrive Holodrive;
-    ColorSensorClass Colorsens;
-    Jewel_Arm Jewel;
+
     public void Sleep(long ticks) throws InterruptedException {
         long timer = System.currentTimeMillis();
         while (System.currentTimeMillis() - timer < ticks) {
             idle();
         }
     }
+
     @Override
     public void runOpMode()throws InterruptedException{
         Holodrive = new HolonomicDrive();
         Holodrive.init(hardwareMap);
-        Colorsens = new ColorSensorClass();
-        Colorsens.init(hardwareMap);
-        Jewel = new Jewel_Arm();
-        Jewel.init(hardwareMap);
         //Can I do this? I don't know if I'm allowed to have 3.
-
         waitForStart();
-        Colorsens.leftColor.enableLed(true);
-        Colorsens.rightColor.enableLed(true);
-        Jewel.jewelArmDown();
+        Holodrive.color.leftColor.enableLed(true);
+        Holodrive.color.rightColor.enableLed(true);
+        Holodrive.jewelArm.jewelArmDown();
         if (Holodrive.BlueSwitch.getState()){
             //BLUE BLUE BLUE
-            if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isBlue(Colorsens.rightColor)){
+            if (Holodrive.color.isBlue(Holodrive.color.leftColor) && Holodrive.color.isBlue(Holodrive.color.rightColor)){
                 //Both blue -- something is wrong!
                 Sleep(30000);
             }
-            else if (Colorsens.isRed(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
+            else if (Holodrive.color.isRed(Holodrive.color.leftColor) && Holodrive.color.isRed(Holodrive.color.rightColor)){
                 //Both red -- something is wrong!
                 Sleep(30000);
             }
-            else if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
+            else if (Holodrive.color.isBlue(Holodrive.color.leftColor) && Holodrive.color.isRed(Holodrive.color.rightColor)){
                 // Left blue and right red. Since we are blue, we want to turn right.
                 Holodrive.turnrightunlim(0.5, this);
                 Sleep(2000);
                 Holodrive.stopmotors();
             }
-            else if (Colorsens.isRed(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
+            else if (Holodrive.color.isRed(Holodrive.color.leftColor) && Holodrive.color.isRed(Holodrive.color.rightColor)){
                 // Left red and right blue. Since we are blue, we want to turn left.
                 Holodrive.turnleftunlim(0.5, this);
                 Sleep(2000);
@@ -66,21 +61,21 @@ public class Jewel_Autonomous extends LinearOpMode{
         }
         else{
             //RED RED RED
-            if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isBlue(Colorsens.rightColor)){
+            if (Holodrive.color.isBlue(Holodrive.color.leftColor) && Holodrive.color.isBlue(Holodrive.color.rightColor)){
                 //Both blue -- something is wrong!
                 Sleep(30000);
             }
-            else if (Colorsens.isRed(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
+            else if (Holodrive.color.isRed(Holodrive.color.leftColor) && Holodrive.color.isRed(Holodrive.color.rightColor)){
                 //Both red -- something is wrong!
                 Sleep(30000);
             }
-            else if (Colorsens.isBlue(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
+            else if (Holodrive.color.isBlue(Holodrive.color.leftColor) && Holodrive.color.isRed(Holodrive.color.rightColor)){
                 // Left blue and right red. Since we are red, we want to turn left.
                 Holodrive.turnleftunlim(0.5, this);
                 Sleep(2000);
                 Holodrive.stopmotors();
             }
-            else if (Colorsens.isRed(Colorsens.leftColor) && Colorsens.isRed(Colorsens.rightColor)){
+            else if (Holodrive.color.isRed(Holodrive.color.leftColor) && Holodrive.color.isRed(Holodrive.color.rightColor)){
                 // Left red and right blue. Since we are red, we want to turn right.
                 Holodrive.turnrightunlim(0.5, this);
                 Sleep(2000);
