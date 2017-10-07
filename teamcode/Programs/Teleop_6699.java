@@ -76,5 +76,4 @@ public class Teleop_6699 extends LinearOpMode
             }
         }
     }
-
 }

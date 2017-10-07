@@ -6,6 +6,7 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-public class Glyph_Arm {
+public class Glyph_Arm
+{
 
 }
