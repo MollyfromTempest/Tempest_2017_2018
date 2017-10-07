@@ -12,7 +12,6 @@ import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 @TeleOp
 public class Teleop_6699 extends LinearOpMode{
 
-
     HolonomicDrive Holodrive;
     Jewel_Arm Jewel;
 
