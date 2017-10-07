@@ -9,9 +9,7 @@ import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 /**
  * Created by Molly on 9/30/2017.
  */
-@TeleOp
-public class Teleop_6699 extends LinearOpMode{
-
+@TeleOp 
 public class Teleop_6699 extends LinearOpMode
 {
     // holonomic drive object instance
