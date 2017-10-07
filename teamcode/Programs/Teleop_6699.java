@@ -4,17 +4,19 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Glyph_Arm;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 
 /**
  * Created by Molly on 9/30/2017.
  */
-@TeleOp 
+@TeleOp
 public class Teleop_6699 extends LinearOpMode
 {
     // holonomic drive object instance
     HolonomicDrive Holodrive;
     Jewel_Arm Jewel;
+    Glyph_Arm Glyph;
 
     // sleep fuction
     public void Sleep(long ticks) throws InterruptedException
@@ -31,8 +33,6 @@ public class Teleop_6699 extends LinearOpMode
     {
         Holodrive = new HolonomicDrive();
         Holodrive.init(hardwareMap);
-        Jewel = new Jewel_Arm();
-        Jewel.init(hardwareMap);
 
         double theta;
         double power;
@@ -63,18 +63,33 @@ public class Teleop_6699 extends LinearOpMode
                 Holodrive.stopmotors();
             }
 
-            if (gamepad1.dpad_left) {
+            if (gamepad1.dpad_left)
+            {
                 //Button could change
                 if (!JewelArmUp) {
-                    Jewel.jewelArmUp();
+                    Holodrive.jewelArm.jewelArmUp();
                     JewelArmUp = true;
                 } else {
-                    Jewel.jewelArmDown();
+                    Holodrive.jewelArm.jewelArmDown();
                     JewelArmUp = false;
                 }
                 while (gamepad1.dpad_left) idle();
             }
+            if (gamepad1.left_trigger>0.2 && gamepad1.right_trigger<0.2){
+                Holodrive.glyphArm.lift();
+            } else if (gamepad1.left_trigger< 0.2 && gamepad1.right_trigger>0.2) {
+                Holodrive.glyphArm.lower();
+            }else {
+                Holodrive.glyphArm.stopLifting();
+            }
+
+            if (gamepad1.left_bumper && !gamepad1.right_bumper){
+                Holodrive.glyphArm.grab();
+            }else if (!gamepad1.left_bumper && gamepad1.right_bumper){
+                Holodrive.glyphArm.release();
+            }else{
+                Holodrive.glyphArm.holdGrabPosition();
+            }
         }
     }
-
 }
