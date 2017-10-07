@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 
 /**
  * Created by Molly on 9/30/2017.
@@ -13,6 +14,7 @@ public class Teleop_6699 extends LinearOpMode{
 
 
     HolonomicDrive Holodrive;
+    Jewel_Arm Jewel;
 
     public void Sleep(long ticks) throws InterruptedException {
         long timer = System.currentTimeMillis();
@@ -25,6 +27,8 @@ public class Teleop_6699 extends LinearOpMode{
     public void runOpMode() throws InterruptedException {
         Holodrive = new HolonomicDrive();
         Holodrive.init(hardwareMap);
+        Jewel = new Jewel_Arm();
+        Jewel.init(hardwareMap);
 
         double theta;
         double power;
@@ -33,10 +37,7 @@ public class Teleop_6699 extends LinearOpMode{
         double driveScale = 1;
         double turnScale =1;
 
-        /*
-        boolean JUp = false
-        JewelArm.setposition(some position);
-         */
+        boolean JewelArmUp = false;
 
         waitForStart();
         while(opModeIsActive()){
@@ -53,20 +54,18 @@ public class Teleop_6699 extends LinearOpMode{
             } else{
                 Holodrive.stopmotors();
             }
-            /*
-            Code reserved for jewel arm, although specific button involved could change
-            Will tweak to add some stuff involving arm class, but code for that isn't created yet
+
             if (gamepad1.dpad_left) {
+                //Button could change
                 if (!JewelArmUp) {
-                    JewelArm.setPosition(JUp);
+                    Jewel.jewelArmUp();
                     JewelArmUp = true;
                 } else {
-                    JewelArm.setPosition(JDown);
+                    Jewel.jewelArmDown();
                     JewelArmUp = false;
                 }
-
                 while (gamepad1.dpad_left) idle();
-            }*/
+            }
         }
     }
 
