@@ -4,9 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Glyph_Arm;
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
-
 /**
  * Created by Molly on 9/30/2017.
  */
@@ -91,8 +88,4 @@ public class Teleop_6699 extends LinearOpMode
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 4f8b23bb54452a2619318a5fb37a14078d3ed9c3
