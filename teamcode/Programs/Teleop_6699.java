@@ -9,20 +9,24 @@ import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDri
  * Created by Molly on 9/30/2017.
  */
 @TeleOp
-public class Teleop_6699 extends LinearOpMode{
-
-
+public class Teleop_6699 extends LinearOpMode
+{
+    // holonomic drive object instance
     HolonomicDrive Holodrive;
 
-    public void Sleep(long ticks) throws InterruptedException {
+    // sleep fuction
+    public void Sleep(long ticks) throws InterruptedException
+    {
         long timer = System.currentTimeMillis();
-        while (System.currentTimeMillis() - timer < ticks) {
+        while (System.currentTimeMillis() - timer < ticks)
+        {
             idle();
         }
     }
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() throws InterruptedException
+    {
         Holodrive = new HolonomicDrive();
         Holodrive.init(hardwareMap);
 
@@ -39,18 +43,22 @@ public class Teleop_6699 extends LinearOpMode{
          */
 
         waitForStart();
-        while(opModeIsActive()){
+        while(opModeIsActive())
+        {
             theta = -Math.PI / 4 + Math.atan2(-gamepad1.left_stick_y, -gamepad1.left_stick_x);
             power = Math.sqrt((gamepad1.left_stick_x) * (gamepad1.left_stick_x) + (gamepad1.left_stick_y) * (gamepad1.left_stick_y));
             pivotpower = -gamepad1.right_stick_x;
-            if (power > 0.2) {
+            if (power > 0.2)
+            {
                 Holodrive.pan(theta, power * driveScale);
-            } else if (Math.abs(pivotpower) > 0.1){
+            } else if (Math.abs(pivotpower) > 0.1)
+            {
                 Holodrive.NE.setPower(pivotpower * turnScale);
                 Holodrive.SE.setPower(pivotpower * turnScale);
                 Holodrive.NW.setPower(-pivotpower * turnScale);
                 Holodrive.SW.setPower(-pivotpower * turnScale);
-            } else{
+            } else
+            {
                 Holodrive.stopmotors();
             }
             /*
