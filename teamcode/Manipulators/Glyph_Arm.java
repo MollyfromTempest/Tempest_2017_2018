@@ -3,14 +3,9 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators;
 /**
  * Created by Molly on 10/7/2017.
  */
-<<<<<<< HEAD
 
-public class Glyph_Arm {
-=======
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
->>>>>>> 7e2dd76904a1283ba9330fbbf19891adabfe190c
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Glyph_Arm
 {
