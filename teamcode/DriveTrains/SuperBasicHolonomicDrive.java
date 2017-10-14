@@ -14,7 +14,7 @@ public class SuperBasicHolonomicDrive {
     Use if you have no sensors attached and you have no desire for more complicated functionality.
     This class forms the basis for BasicTeleop.
      */
-    int speed = 140*4;
+    int speed = 140*16;
 
     HardwareMap HWMap;
 
