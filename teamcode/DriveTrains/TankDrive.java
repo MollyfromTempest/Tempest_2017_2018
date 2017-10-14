@@ -2,14 +2,12 @@ package org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.GyroScope;
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.*;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.GyroSensor;
-import com.qualcomm.robotcore.hardware.HardwareDevice;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.GyroScope;
 
 /**
  * Created by Aaron on 5/20/2017.

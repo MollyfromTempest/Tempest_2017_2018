@@ -1,12 +1,8 @@
 package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors;
 
-import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.I2cDevice;
-import com.qualcomm.robotcore.hardware.I2cDeviceReader;
 import com.qualcomm.robotcore.hardware.I2cDeviceSynchImpl;
-
-import java.util.concurrent.locks.Lock;
 
 /**
  * Created by Aaron on 1/7/2017.

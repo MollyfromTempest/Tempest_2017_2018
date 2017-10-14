@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.I2cDevice;
 import com.qualcomm.robotcore.hardware.I2cAddr;
-import com.qualcomm.robotcore.hardware.I2cAddrConfig;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**

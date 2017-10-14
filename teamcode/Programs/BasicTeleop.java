@@ -1,10 +1,9 @@
-package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Programs;
+package org.firstinspires.ftc.ftc.teamcode.Programs;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.SuperBasicHolonomicDrive;
+import org.firstinspires.ftc.ftc.teamcode.DriveTrains.SuperBasicHolonomicDrive;
 
 /**
  * Created by Molly on 5/27/2017.

@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Programs;
 
-import android.provider.CalendarContract;
+
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.ColorSensorClass;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 /**
  * Created by Molly on 9/30/2017.
  */
