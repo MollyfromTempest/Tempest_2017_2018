@@ -1,7 +1,9 @@
-package org.firstinspires.ftc.ftc.teamcode.Manipulators;
+package org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Sweeper;
 
 /**
  * Created by Molly on 6/10/2017.
