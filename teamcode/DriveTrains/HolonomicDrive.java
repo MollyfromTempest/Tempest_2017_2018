@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Glyph_Arm;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.ColorSensorClass;
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Sensors.GyroScope;
@@ -25,6 +26,7 @@ public class    HolonomicDrive {
     public GyroScope gyro;
     public ColorSensorClass color;
     public Jewel_Arm jewelArm;
+    public Glyph_Arm glyphArm;
 
     int speed = 140*4;
 
@@ -64,8 +66,12 @@ public class    HolonomicDrive {
 
         color = new ColorSensorClass();
         color.init(HWMap);
+
         jewelArm = new Jewel_Arm();
         jewelArm.init(HWMap);
+
+        glyphArm = new Glyph_Arm();
+        glyphArm.init(HWMap);
 
         BlueSwitch = HWMap.digitalChannel.get("LEDBlueSwitch");
     }

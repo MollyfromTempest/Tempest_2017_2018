@@ -4,31 +4,30 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.Tempest_2017_2018.teamcode.DriveTrains.HolonomicDrive;
-import org.firstinspires.ftc.Tempest_2017_2018.teamcode.Manipulators.Jewel_Arm;
-
 /**
  * Created by Molly on 9/30/2017.
  */
 @TeleOp
-public class Teleop_6699 extends LinearOpMode{
-
-
+public class Teleop_6699 extends LinearOpMode
+{
+    // holonomic drive object instance
     HolonomicDrive Holodrive;
-    Jewel_Arm Jewel;
-
-    public void Sleep(long ticks) throws InterruptedException {
+    
+    // sleep fuction
+    public void Sleep(long ticks) throws InterruptedException
+    {
         long timer = System.currentTimeMillis();
-        while (System.currentTimeMillis() - timer < ticks) {
+        while (System.currentTimeMillis() - timer < ticks)
+        {
             idle();
         }
     }
 
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() throws InterruptedException
+    {
         Holodrive = new HolonomicDrive();
         Holodrive.init(hardwareMap);
-        Jewel = new Jewel_Arm();
-        Jewel.init(hardwareMap);
 
         double theta;
         double power;
@@ -40,33 +39,53 @@ public class Teleop_6699 extends LinearOpMode{
         boolean JewelArmUp = false;
 
         waitForStart();
-        while(opModeIsActive()){
+        while(opModeIsActive())
+        {
             theta = -Math.PI / 4 + Math.atan2(-gamepad1.left_stick_y, -gamepad1.left_stick_x);
             power = Math.sqrt((gamepad1.left_stick_x) * (gamepad1.left_stick_x) + (gamepad1.left_stick_y) * (gamepad1.left_stick_y));
             pivotpower = -gamepad1.right_stick_x;
-            if (power > 0.2) {
+            if (power > 0.2)
+            {
                 Holodrive.pan(theta, power * driveScale);
-            } else if (Math.abs(pivotpower) > 0.1){
+            } else if (Math.abs(pivotpower) > 0.1)
+            {
                 Holodrive.NE.setPower(pivotpower * turnScale);
                 Holodrive.SE.setPower(pivotpower * turnScale);
                 Holodrive.NW.setPower(-pivotpower * turnScale);
                 Holodrive.SW.setPower(-pivotpower * turnScale);
-            } else{
+            } else
+            {
                 Holodrive.stopmotors();
             }
 
-            if (gamepad1.dpad_left) {
+            if (gamepad1.dpad_left)
+            {
                 //Button could change
                 if (!JewelArmUp) {
-                    Jewel.jewelArmUp();
+                    Holodrive.jewelArm.jewelArmUp();
                     JewelArmUp = true;
                 } else {
-                    Jewel.jewelArmDown();
+                    Holodrive.jewelArm.jewelArmDown();
                     JewelArmUp = false;
                 }
                 while (gamepad1.dpad_left) idle();
             }
+
+            if (gamepad1.left_trigger>0.2 && gamepad1.right_trigger<0.2){
+                Holodrive.glyphArm.lift();
+            } else if (gamepad1.left_trigger< 0.2 && gamepad1.right_trigger>0.2) {
+                Holodrive.glyphArm.lower();
+            }else {
+                Holodrive.glyphArm.stopLifting();
+            }
+
+            if (gamepad1.left_bumper && !gamepad1.right_bumper){
+                Holodrive.glyphArm.grab();
+            }else if (!gamepad1.left_bumper && gamepad1.right_bumper){
+                Holodrive.glyphArm.release();
+            }else{
+                Holodrive.glyphArm.holdGrabPosition();
+            }
         }
     }
-
 }
